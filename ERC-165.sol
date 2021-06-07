@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.4;
+pragma solidity ^0.8.4;
 
 // Publishing the supported interface; this is what ERC165 is
 // A contract that complies with ERC165 defines the following function
