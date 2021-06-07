@@ -81,7 +81,11 @@ contract B {
             let x := mload(0x40)
             // Storing the ERC165 interfaceID at the beginning of the empty mem storage
             mstore(x, 0x01ffc9a7)
-            // Placing x, next to the interfaceID (4 bytes to its right)
+
+            // _interfaceID here is the interfaceId of the interface we want to know if it is implemented
+            // add(memAddressOfx, bytes to add to it (length of interfaceID), then store interfaceID there)
+            // mstore (location, data to store at location)
+            // location here is memlocation of x + 4 bytes
             mstore(add(x, 0x04), _interfaceID)
 
             success := staticcall(
@@ -89,14 +93,13 @@ contract B {
                                 30000,
                 // The contract to whom the call is being made
                                 _contract,
-                // Input args stored at mem location x
+                // pointer to the interfaceID of any given interface
                                 x,
-                // Inputs are 36 bytes in length, 24+36 = 60 
                                 0x24,
                 // Storing output over the input to conserve space
                                 x,
-                // Outputs are 32 bytes long
                                 0x20)
+            // mload returns the value stored at mam address x, in this case the bool return value of the supportsInterface of ContractA
             result := mload(x) // Finally, loading the result
         }
     }
