@@ -7,5 +7,6 @@ interface ERC721Metatdata is IERC721 {
     function name() external view returns (string _name);
     function symbol() external view returns (string _symbol);
     // This URI links to a JSON file that confirms to the ERC721 Json schema and provides details about the token
+    // Said file describes the asset to which the NFT is attached
     function tokenURI(uint256 _tokenId) external view returns (string);
 }

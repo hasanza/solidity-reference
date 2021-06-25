@@ -22,7 +22,7 @@ interface IERC721 is IERC165 {
     // Approve thirdparty to transfer/ handle the NFT
     function approve(address _approved, uint256 _tokenId) external payable;
     // Approve thirdparty to handle/ transfer all NFTs of approver address
-    function setApproveForAll(address _operator, bool _approved) external;
+    function setApprovalForAll(address _operator, bool _approved) external;
     // Returns the approved address for a given NFT
     function getApproved(uint256 _tokenId) external view returns (address);
     // Checks if given address is the approved address for a given address' NFTs
